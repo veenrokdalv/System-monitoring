@@ -7,6 +7,7 @@ class MainWindow(process.SystemMonitoring, tk.Tk):
         super().__init__()
         self.init_gui()
         self.widget_ram()
+        self.widget_rom()
         self.mainloop()
     
     def init_gui(self):
@@ -14,9 +15,20 @@ class MainWindow(process.SystemMonitoring, tk.Tk):
         self.resizable(width=False, height=False)
     
     def widget_ram(self):
-        widget_text = 'Total memory ram: ' + str(self.get_total_memory()[0]) + self.get_total_memory()[1] +\
-            '\nUsed memory ram: ' + str(self.get_used_memory()[0]) + self.get_total_memory()[1] +\
-            '\nAvailabel memory ram: ' + str(self.get_availabel_memory()[0]) + self.get_total_memory()[1]
-        label = tk.Label(self, text=widget_text)
-        label.pack()
-        label.bind('<Enter>', )
+        widget_text = [
+            f'Total memory ram: {self.get_total_memory_RAM()[0]} {self.get_total_memory_RAM()[1]}',
+            f'Used memory ram: {self.get_used_memory_RAM()[0]} {self.get_total_memory_RAM()[1]}',
+            f'Availabel memory ram: {self.get_availabel_memory_RAM()[0]} {self.get_total_memory_RAM()[1]}'
+        ]
+        self.label_ram = tk.Label(self, text=widget_text[0]+'\n'+widget_text[1]+'\n'+widget_text[2])
+        self.label_ram.pack()
+    
+    def widget_rom(self):
+        widget_text = [
+            f'Total memory ROM: {self.get_total_memory_ROM()[0]} {self.get_total_memory_ROM()[1]}',
+            f'Used memory ROM: {self.get_used_memory_ROM()[0]} {self.get_used_memory_ROM()[1]}',
+            f'Availabel memory ROM: {self.get_availabel_memory_ROM()[0]} {self.get_availabel_memory_ROM()[1]}',
+
+        ]
+        self.label_rom = tk.Label(self, text=widget_text[0]+'\n'+widget_text[1]+'\n'+widget_text[2])
+        self.label_rom.pack()

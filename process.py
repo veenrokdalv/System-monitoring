@@ -26,14 +26,30 @@ class SystemMonitoring:
                 return (round(bytes, 2), unit)
             bytes /= factor
     
-    def get_total_memory(self):
+    def get_total_memory_RAM(self):
         virtual_memory = psutil.virtual_memory()
         return self.get_size_memory(virtual_memory.total)
     
-    def get_used_memory(self):
+    def get_used_memory_RAM(self):
         virtual_memory = psutil.virtual_memory()
         return self.get_size_memory(virtual_memory.used)
     
-    def get_availabel_memory(self):
+    def get_availabel_memory_RAM(self):
         virtual_memory = psutil.virtual_memory()
         return self.get_size_memory(virtual_memory.available)
+
+        virtual_memory = psutil.virtual_memory()
+        return self.get_size_memory(virtual_memory.available)
+
+        virtual_memory = psutil.virtual_memory()
+        return self.get_size_memory(virtual_memory.available)
+
+    def get_total_memory_ROM(self):
+        virtual_memory = psutil.disk_usage('/')
+        return self.get_size_memory(virtual_memory.total)
+    def get_used_memory_ROM(self):
+        virtual_memory = psutil.disk_usage('/')
+        return self.get_size_memory(virtual_memory.used)
+    def get_availabel_memory_ROM(self):
+        virtual_memory = psutil.disk_usage('/')
+        return self.get_size_memory(virtual_memory.free)
