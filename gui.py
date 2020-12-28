@@ -11,7 +11,7 @@ class MainWindow(process.SystemMonitoring, tk.Tk):
         self.mainloop()
     
     def init_gui(self):
-        self.geometry('300x480')
+        self.geometry('300x380')
         self.resizable(width=False, height=False)
     
     def widget_ram(self):
@@ -22,6 +22,7 @@ class MainWindow(process.SystemMonitoring, tk.Tk):
         ]
         self.label_ram = tk.Label(self, text=widget_text[0]+'\n'+widget_text[1]+'\n'+widget_text[2])
         self.label_ram.pack()
+        self.label_ram.after(100, )
     
     def widget_rom(self):
         widget_text = [

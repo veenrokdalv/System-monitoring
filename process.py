@@ -47,9 +47,12 @@ class SystemMonitoring:
     def get_total_memory_ROM(self):
         virtual_memory = psutil.disk_usage('/')
         return self.get_size_memory(virtual_memory.total)
+        
     def get_used_memory_ROM(self):
         virtual_memory = psutil.disk_usage('/')
         return self.get_size_memory(virtual_memory.used)
+        
     def get_availabel_memory_ROM(self):
         virtual_memory = psutil.disk_usage('/')
         return self.get_size_memory(virtual_memory.free)
+        
